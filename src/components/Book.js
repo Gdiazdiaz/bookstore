@@ -6,6 +6,7 @@ function Book(props) {
     <div className="book-container">
       <h2>{bookdeta.title}</h2>
       <h3>{bookdeta.author}</h3>
+      <button type="button">Remove</button>
     </div>
   );
 }
