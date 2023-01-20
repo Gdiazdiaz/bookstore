@@ -95,7 +95,8 @@ Clone this repository to your desired folder:
 Install this project with:
 
 - You need to install npm to use the commands
-- In your console type, npm install to install all the dependencies
+- In your console type, `npm install` to install all the dependencies
+- Then use `npm start` to deploy the project in local host
 
 ### Usage
 
