@@ -1,6 +1,6 @@
 import { Redux } from '@reduxjs/toolkit';
-import categoriesReducer from 'books/books.js';
-import bookReducer from 'categories/categories.js';
+import categoriesReducer from 'books/books';
+import bookReducer from 'categories/categories';
 
 const rootReducer = Redux.combineReducers({
   addremo: bookReducer,
