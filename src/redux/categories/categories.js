@@ -1,12 +1,16 @@
-import { Redux } from '@reduxjs/toolkit';
-import categoriesReducer from 'books/books';
-import bookReducer from 'categories/categories';
+const CHECK_STATUS = 'bookstore/src/redux/categories/CHECKSTATUS';
 
-const rootReducer = Redux.combineReducers({
-  addremo: bookReducer,
-  catredu: categoriesReducer,
+const categoriesReducer = (state = [], action) => {
+  switch (action.type) {
+    case CHECK_STATUS:
+      return 'UNDER CONSTRUCTIONS';
+    default:
+      return state;
+  }
+};
+
+const CheckStatus = () => ({
+  type: CHECK_STATUS,
+  payload: 'UNDER CONSTRUCTION',
 });
-
-const store = Redux.configureStore(rootReducer);
-
-export default store;
+export default { CheckStatus, categoriesReducer };

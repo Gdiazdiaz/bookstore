@@ -1,20 +1,27 @@
-const ADDBOOK = {
-  type: 'ADD',
-};
+import Book from 'components/Book';
 
-const REMOVEBOOK = {
-  type: 'REMOVEBOOK',
-};
+const ADDBOOK = 'bookstore/src/redux/books/books/ADDBOOK';
+const REMOVEBOOK = 'bookstore/src/redux/books/books/REMOVEBOOK';
 
 const bookReducer = (state = [], action) => {
   switch (action.type) {
     case ADDBOOK:
-      return [...state];
+      return [...state, action.payload];
     case REMOVEBOOK:
-      return state;
+      return state.filter((book) => book.id !== action.payload);
     default:
       return state;
   }
 };
 
-export default { bookReducer, ADDBOOK, REMOVEBOOK };
+const AddBook = () => ({
+  type: ADDBOOK,
+  payload: Book,
+});
+
+const RemoveBook = () => ({
+  type: REMOVEBOOK,
+  payload: Book,
+});
+
+export default { bookReducer, AddBook, RemoveBook };
