@@ -1,27 +1,34 @@
-import Book from 'components/Book';
-
 const ADDBOOK = 'bookstore/src/redux/books/books/ADDBOOK';
 const REMOVEBOOK = 'bookstore/src/redux/books/books/REMOVEBOOK';
+const BOOK_LIST = 'bookstore/src/redux/books/books/BOOK_LIST';
 
-const bookReducer = (state = [], action) => {
+const bookReducer = (state = [{ title: 'The Scarlet Letter', author: 'Nathaniel Hawthorne', id: '1' }], action) => {
   switch (action.type) {
     case ADDBOOK:
       return [...state, action.payload];
     case REMOVEBOOK:
-      return state.filter((_, id) => id !== action.payload);
+      return state.filter((book) => book.id !== action.payload);
+    case BOOK_LIST:
+      return state;
     default:
       return state;
   }
 };
 
-const AddBook = () => ({
+export const AddBook = (payload) => ({
   type: ADDBOOK,
-  payload: Book,
+  payload,
 });
 
-const RemoveBook = () => ({
+export const RemoveBook = (id) => ({
   type: REMOVEBOOK,
-  payload: Book,
+  payload: id,
 });
 
-export default { bookReducer, AddBook, RemoveBook };
+export const listBooks = () => async (dispatch) => {
+  dispatch({
+    type: BOOK_LIST,
+  });
+};
+
+export default bookReducer;
