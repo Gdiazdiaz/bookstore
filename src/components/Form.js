@@ -13,7 +13,6 @@ function Form() {
     const data = {
       title, author, id,
     };
-    console.log(data);
     dispatch(AddBook(data));
     setTitle('');
     setAuthor('');
