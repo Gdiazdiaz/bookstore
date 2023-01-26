@@ -9,8 +9,9 @@ const categoriesReducer = (state = [], action) => {
   }
 };
 
-const CheckStatus = () => ({
+export const CheckStatus = () => ({
   type: CHECK_STATUS,
   payload: 'UNDER CONSTRUCTION',
 });
-export default { CheckStatus, categoriesReducer };
+
+export default categoriesReducer;
