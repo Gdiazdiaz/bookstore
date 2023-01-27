@@ -5,23 +5,24 @@ import { listBooks } from '../redux/books/books';
 
 function BookList() {
   const booksList = useSelector((state) => state.addremo);
+  // console.log(booksList);
   const send = useDispatch();
 
   useEffect(() => {
     send(listBooks());
   }, [send]);
-  let render = '';
-  render = booksList.map((item) => (
-    <Book
-      id={item.id}
-      key={item.id}
-      title={item.title}
-      author={item.author}
-    />
-  ));
   return (
     <div className="books-container">
-      {render}
+      {
+        booksList.map((item) => (
+          <Book
+            id={item.id}
+            key={item.id}
+            title={item.title}
+            author={item.author}
+          />
+        ))
+      }
     </div>
   );
 }

@@ -8,9 +8,9 @@ const bookReducer = (state = [], action) => {
     case ADDBOOK:
       return [...state, action.payload];
     case REMOVEBOOK:
-      return state.filter((book) => book.id !== action.payload);
+      return state.filter((book) => book.id !== action.id);
     case BOOK_LIST:
-      return state;
+      return action.bookList;
     default:
       return state;
   }
@@ -34,18 +34,22 @@ const setData = async ({
 };
 
 const getData = async () => {
-  const result = await fetch(API_URL, {
-    method: 'GET',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-  });
-  const books = await result.json();
-  return books;
+  const response = await fetch(API_URL);
+  const data = await response.json();
+
+  const list = Object.entries(data).map(([id, book]) => {
+    const { title, author, category } = book[0];
+    return {
+      id, title, author, category,
+    };
+  })
+    .sort((a, b) => a.title.localeCompare(b.title));
+
+  return list;
 };
 
 const deleteData = async (id) => {
-  await fetch(API_URL + id, {
+  await fetch(`${API_URL}/${id}`, {
     method: 'DELETE',
     header: {
       'Content-Type': 'application/json',
@@ -65,7 +69,7 @@ export const RemoveBook = (id) => async (dispatch) => {
   deleteData(id);
   dispatch({
     type: REMOVEBOOK,
-    payload: id,
+    id,
   });
 };
 
