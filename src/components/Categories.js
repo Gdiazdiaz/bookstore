@@ -10,7 +10,7 @@ function Categories() {
   return (
     <div className="categories-container">
       <h1>{status}</h1>
-      <button type="button" onClick={displayStatus}>Check Status</button>
+      <button className="add-button" type="button" onClick={displayStatus}>Check Status</button>
     </div>
   );
 }
