@@ -1,6 +1,7 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { RemoveBook } from '../redux/books/books';
+import './Book.css';
 
 function Book(props) {
   const bookdeta = props;
@@ -10,9 +11,14 @@ function Book(props) {
   };
   return (
     <div className="book-container">
-      <h2>{bookdeta.title}</h2>
-      <h3>{bookdeta.author}</h3>
-      <button type="button" onClick={removeBook}>Remove</button>
+      <h4 className="category">Fiction</h4>
+      <h2 className="title">{bookdeta.title}</h2>
+      <h3 className="author">{bookdeta.author}</h3>
+      <div className="button-container">
+        <button type="button" className="button">Comments</button>
+        <button className="button brd" type="button" onClick={removeBook}>Remove</button>
+        <button type="button" className="button brd">Edit</button>
+      </div>
     </div>
   );
 }

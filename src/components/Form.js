@@ -2,6 +2,7 @@ import { React, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import { useDispatch } from 'react-redux';
 import { AddBook } from '../redux/books/books';
+import './Form.css';
 
 function Form() {
   const [title, setTitle] = useState('');
@@ -20,11 +21,12 @@ function Form() {
   };
 
   return (
-    <div>
+    <div className="form-container">
+      <h1 className="add-title">ADD NEW BOOK</h1>
       <form>
-        <input className="title" type="text" placeholder="Title" value={title} onChange={(e) => setTitle(e.target.value)} />
-        <input className="author" type="text" placeholder="Author" value={author} onChange={(e) => setAuthor(e.target.value)} />
-        <button className="add-book" type="button" onClick={addBook}>Add Book</button>
+        <input className="title-input" type="text" placeholder="Book title" value={title} onChange={(e) => setTitle(e.target.value)} />
+        <input className="author-input" type="text" placeholder="Author" value={author} onChange={(e) => setAuthor(e.target.value)} />
+        <button className="add-button" type="button" onClick={addBook}>Add Book</button>
       </form>
     </div>
   );
