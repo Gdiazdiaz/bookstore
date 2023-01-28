@@ -7,11 +7,12 @@ function Form() {
   const [title, setTitle] = useState('');
   const [author, setAuthor] = useState('');
   const id = uuidv4();
+  const category = 'Fiction';
   const dispatch = useDispatch();
 
   const addBook = () => {
     const data = {
-      title, author, id,
+      id, title, author, category,
     };
     dispatch(AddBook(data));
     setTitle('');
